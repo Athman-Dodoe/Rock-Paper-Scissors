@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    let choices = ["rock","paper","scissor"]
+    const choices = ["rock","paper","scissor"]
     let choice = choices[Math.floor(Math.random() * choices.length)]
     return choice;
  }
@@ -22,13 +22,13 @@ function getComputerChoice() {
     }
 
     else {
-        return(`you loose ${computerSelection} beats ${playerSelection}`)
+        return(`You Loose! ${computerSelection} beats ${playerSelection}`)
     }
 
 
  }
 
-const playerSelection = prompt("Enter your choice")
+const playerSelection = prompt("Enter your choice").toLowerCase()
 const computerSelection = getComputerChoice();
 console.log("Player Selection:", playerSelection);
 console.log("Computer Selection:", computerSelection);
