@@ -28,7 +28,13 @@ function getComputerChoice() {
 
  }
 
-const playerSelection = prompt("Enter your choice").toLowerCase()
+let playerSelection;
+
+do {
+    playerSelection = prompt("Choose rock or paper or scissor").toLowerCase();
+} while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissor');
+
+
 const computerSelection = getComputerChoice();
 console.log("Player Selection:", playerSelection);
 console.log("Computer Selection:", computerSelection);
