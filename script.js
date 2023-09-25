@@ -1,14 +1,16 @@
 let rockBtn = document.getElementById('rock');
 let paperBtn = document.getElementById('paper');
 let scissorBtn = document.getElementById('scissor');
+let resultsElement = document.getElementById('#results');
 
 rockBtn.addEventListener('click', function() {
     const computerSelection = getComputerChoice();
     let playerSelection = 'rock';
-    console.log("Player Selection:", playerSelection);
-    console.log("Computer Selection:", computerSelection);
     let results = playRound(playerSelection, computerSelection);
-    console.log(results);
+    let li = document.createElement('li');
+    li.innerText = `computerSelection: ${computerSelection} Results: ${results}`;
+    resultsElement.appendChild(li);
+    
     
 });
 
@@ -16,20 +18,20 @@ rockBtn.addEventListener('click', function() {
 paperBtn.addEventListener('click', function() {
     const computerSelection = getComputerChoice();
     let playerSelection = 'paper';
-    console.log("Player Selection:", playerSelection);
-    console.log("Computer Selection:", computerSelection);
     let results = playRound(playerSelection, computerSelection);
-    console.log(results);
+    let li = document.createElement('li');
+    li.innerText = `computerSelection: ${computerSelection} Results: ${results}`;
+    resultsElement.appendChild(li);
 });
 
 
 scissorBtn.addEventListener('click', function() {
     const computerSelection = getComputerChoice();
     let playerSelection = 'scissor';
-    console.log("Player Selection:", playerSelection);
-    console.log("Computer Selection:", computerSelection);
     let results = playRound(playerSelection, computerSelection);
-    console.log(results);
+    let li = document.createElement('li');
+    li.innerText = `computerSelection: ${computerSelection} Results: ${results}`;
+    resultsElement.appendChild(li);
    
 });
 
