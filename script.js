@@ -30,12 +30,30 @@ function getComputerChoice() {
 
 let playerSelection;
 
-do {
-    playerSelection = prompt("Choose rock or paper or scissor").toLowerCase();
-} while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissor');
+let countWins = 0;
+let countDraws = 0;
+let countLooses = 0;
+ 
+for (let i = 0; i < 5; i++){
+    do {
+        playerSelection = prompt("Choose rock or paper or scissor").toLowerCase();
+    } while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissor');
+    
+    const computerSelection = getComputerChoice();
+    console.log("Player Selection:", playerSelection);
+    console.log("Computer Selection:", computerSelection);
+    let results = playRound(playerSelection, computerSelection);
+    console.log(results);
 
+    if (results === 'You win'){
+        countWins += 1;
+    }else if (results === 'Its a draw!'){
+        countDraws += 1;
+    
+    }else {
+        countLooses += 1;
+    }
 
-const computerSelection = getComputerChoice();
-console.log("Player Selection:", playerSelection);
-console.log("Computer Selection:", computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+    
+   
+}
