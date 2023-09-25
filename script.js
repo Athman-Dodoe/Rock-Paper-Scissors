@@ -52,8 +52,22 @@ for (let i = 0; i < 5; i++){
     
     }else {
         countLooses += 1;
-    }
+    }  
+}
 
-    
-   
+console.log('Game Results');
+console.log('----------------------------');
+
+console.log('No of wins:', countWins);
+console.log('No of Draws:', countDraws);
+console.log('No of Looses:', countLooses);
+
+console.log('----------------------------');
+
+if (countWins > countLooses) {
+    console.log('Player Selection Wins')
+}else if ( countWins < countLooses) {
+    console.log('Computer Selection Wins')
+}else {
+    console.log('Its a Draw');
 }
