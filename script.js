@@ -1,26 +1,40 @@
-let rockBtn = document.getElementById('rock');
-let paperBtn = document.getElementById('paper');
-let scissorBtn = document.getElementById('scissor');
-let resultsElement = document.getElementById('results');
-let playerWinsElement = document.getElementById('playerWins');
-let computerWinsElement = document.getElementById('computerWins');
-let winner = document.getElementById('winner');
-let playerWins = 0;
- let computerWins = 0;
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorBtn = document.querySelector('#scissor');
+const resultsElement = document.querySelector('#results');
+const playerPoints = document.querySelector('#player-points');
+const computerPoints = document.querySelector('#computer-points');
+const winner = document.querySelector('#winner');
+const computerOption = document.querySelector('#computer-selection');
+const playerOption = document.querySelector('#player-selection');
+const showResult = document.querySelector('#show-result');
+const gameOver = document.querySelector('.game-over');
+let points = document.querySelector('.points');
+let gameIsOver = false;
+
+
+let player = 0;
+let computer = 0;
 
 rockBtn.addEventListener('click', function() {
+    if (gameIsOver) return;
+
     const computerSelection = getComputerChoice();
     let playerSelection = 'rock';
     let results = playRound(playerSelection, computerSelection);
 
-    let li = document.createElement('li');
-    li.innerText = `computerSelection: ${computerSelection} Results: ${results}`;
-    resultsElement.appendChild(li);
+    playerOption.innerText = `Player : ${playerSelection}`;
+    computerOption.innerText = `Computer : ${computerSelection}`;
+    showResult.innerText = results;
 
     if (results === 'You win'){
-        playerWins += 1;
-    }else if (results !== "Its a draw!"){
-        computerWins += 1;
+        player += 1;
+        showResult.style.color = 'green';
+    }else if(results !== "Its a draw!"){
+        computer += 1;
+        showResult.style.color = 'red';
+    }else {
+        showResult.style.color = 'black';
     }
     
     updateWinsDisplay()
@@ -28,18 +42,24 @@ rockBtn.addEventListener('click', function() {
 
 
 paperBtn.addEventListener('click', function() {
+    if (gameIsOver) return;
+
     const computerSelection = getComputerChoice();
     let playerSelection = 'paper';
     let results = playRound(playerSelection, computerSelection);
 
-    let li = document.createElement('li');
-    li.innerText = `computerSelection: ${computerSelection} Results: ${results}`;
-    resultsElement.appendChild(li);
+    playerOption.innerText = `Player : ${playerSelection}`;
+    computerOption.innerText = `Computer : ${computerSelection}`;
+    showResult.innerText = results;
 
     if (results === 'You win'){
-        playerWins += 1;
-    }else if (results !== "Its a draw!"){
-        computerWins += 1;
+        player += 1;
+        showResult.style.color = 'green';
+    }else if(results !== "Its a draw!"){
+        computer += 1;
+        showResult.style.color = 'red';
+    }else {
+        showResult.style.color = 'black';
     }
 
     updateWinsDisplay()
@@ -47,18 +67,24 @@ paperBtn.addEventListener('click', function() {
 
 
 scissorBtn.addEventListener('click', function() {
+    if (gameIsOver) return;
+
     const computerSelection = getComputerChoice();
     let playerSelection = 'scissor';
     let results = playRound(playerSelection, computerSelection);
 
-    let li = document.createElement('li');
-    li.innerText = `computerSelection: ${computerSelection} Results: ${results}`;
-    resultsElement.appendChild(li);
+    playerOption.innerText = `Player : ${playerSelection}`;
+    computerOption.innerText = `Computer : ${computerSelection}`;
+    showResult.innerText = results;
    
     if (results === 'You win'){
-        playerWins += 1;
-    }else if (results !== "Its a draw!"){
-        computerWins += 1;
+        player += 1;
+        showResult.style.color = 'green';
+    }else if(results !== "Its a draw!"){
+        computer += 1;
+        showResult.style.color = 'red';
+    }else {
+        showResult.style.color = 'black';
     }
 
     updateWinsDisplay()
@@ -71,6 +97,7 @@ function getComputerChoice() {
     let choice = choices[Math.floor(Math.random() * choices.length)]
     return choice;
  }
+
 
  function playRound (playerSelection, computerSelection){  
 
@@ -94,17 +121,47 @@ function getComputerChoice() {
     }
 
  }
+ 
 
 function updateWinsDisplay() {
-    if (playerWins === 5 || computerWins === 5) {
-        playerWinsElement.textContent = `Player Wins: ${playerWins}`;
-        computerWinsElement.textContent = `Computer Wins: ${computerWins}`;
+    playerPoints.textContent = `Player Points: ${player}`;
+    computerPoints.textContent = `Computer Points: ${computer}`;
 
-        if (playerWins < computerWins){
-            winner.innerText = 'The Computer is the winner ';
+    if (player === 5 || computer === 5) {
+        gameIsOver = true;
+
+        let GameOverBtn = document.createElement('p');
+        GameOverBtn.classList.add('end-game');
+        GameOverBtn.textContent = 'Game Over!';
+        gameOver.appendChild(GameOverBtn);
+
+        if (player < computer){
+            winner.innerText = 'You Lost! The Computer is the winner ';
+            winner.style.color = 'red';
+
         }else {
-            winner.innerText = 'The Player is the winner ';
+            winner.innerText = 'You Have Won The Game';
+            winner.style.color = 'green';
         }
+
+        let playAgain = document.createElement('btn');
+        playAgain.classList.add('play-again');
+        playAgain.innerText = 'play again';
+        gameOver.appendChild(playAgain);
+
+        playAgain.addEventListener('click', function() {
+            gameIsOver = false;
+            player = 0;
+            computer = 0;
+            updateWinsDisplay();
+            gameOver.removeChild(GameOverBtn);
+            gameOver.removeChild(playAgain); 
+            playerOption.innerText = '';
+            computerOption.innerText = '';
+            showResult.innerText = '';
+            winner.innerText = '';
+
+        });
     }
 }
 

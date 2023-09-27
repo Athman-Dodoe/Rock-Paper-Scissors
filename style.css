@@ -8,7 +8,6 @@
 body {
     background-color: #f0f0f0;
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     height: 100vh;
 }
@@ -20,14 +19,22 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    height: 100vh;
+    width: 500px;
+    max-height: 100vh;
+}
+
+.selection-buttons {
+  margin-bottom: 20px;
 }
 
 h2{
     color: #333;
     font-size: 24px;
     margin-bottom: 20px;
+}
+
+.about {
+  margin-bottom: 15px;
 }
 
 .btn-selection {
@@ -46,12 +53,30 @@ h2{
     background-color: #2980b9;
   }
 
-  #results {
+  .results {
     text-align: left;
     margin-top: 10px;
-    padding: 10px;
+    padding: 20px;
     background-color: #ecf0f1;
     border-radius: 5px;
+    display: flex;
+    max-width: 400px;
+    margin: auto;
+    align-items: center;
+
+  }
+
+  .selections {
+    margin-right: 5px;
+  }
+
+  .selections #computer-selection {
+    margin-bottom: 10px;
+  }
+
+  #show-result {
+    text-align: center;
+    flex: 2;
   }
 
   #results li {
@@ -61,16 +86,64 @@ h2{
   }
 
 
-#playerWins, #computerWins {
+#playerWins #computerWins {
   font-size: 16px;
   margin-top: 10px;
   color: #333;
 }
 
+.points {
+  margin-top: 15px;
+}
+
+.points #computer-points {
+  margin-top: 5px;
+}
+
+
+
 #winner {
     font-size: 18px;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 20px;
     color: #333;
+    
+  }
+
+  .game-over {
+    color: red;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+
+
+  }
+
+  .end-game {
+    font-size: 2rem;
+    padding: 10px;
+    color: #01022b;
+    margin-top: 10px;
+    width: 250px;
+    text-align: center;
+  }
+
+  .play-again {
+    background-color: #ecf0f1;
+    color: #333;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: bacground-color 0.5s ease;
+    border-radius: 5px;
+  
+
+  }
+
+  .play-again:hover {
+    background-color: #2980b9;
   }
 

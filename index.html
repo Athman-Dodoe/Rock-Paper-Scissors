@@ -9,13 +9,32 @@
 <body>  
     <div class="game-container">
         <h2>Rock Paper Scissor Game</h2>
-        <button class="btn-selection" id="rock">rock</button>
-        <button class="btn-selection" id="paper">paper</button>
-        <button class="btn-selection" id="scissor">scissor</button>
-        <div id="results"></div>
-        <p id="playerWins">Player Wins: 0</p>
-        <p id="computerWins">Computer Wins: 0</p>
-        <p id="winner"></p>
+
+        <p class="about">The first To Reach 5 Points Wins the Game </p>
+
+        <div class="selection-buttons">
+            <button class="btn-selection" id="rock">rock</button>
+            <button class="btn-selection" id="paper">paper</button>
+            <button class="btn-selection" id="scissor">scissor</button>
+        </div>
+        
+        <div class="results">
+            <div class="selections">
+                <p id="computer-selection"></p>
+                <p id="player-selection"></p>
+            </div>
+            <p id="show-result"></p>
+        </div>
+
+        <div class="points">
+            <p id="player-points">Player Points: 0</p>
+            <p id="computer-points">Computer Points: 0</p>
+            <p id="winner"></p>
+        </div>
+
+        <div class="game-over">
+
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
